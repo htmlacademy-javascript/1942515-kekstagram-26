@@ -13,6 +13,6 @@ const strLength = function(ourStr,maxStr){
     return ('Длина строки превышает максимально допустимую');
   }
 };
-strLength('','');
+strLength('ff','f');
 
 
