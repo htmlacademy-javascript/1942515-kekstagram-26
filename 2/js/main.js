@@ -1,18 +1,16 @@
-const returnNumber = function(firstNumber,secondNumber) {
-  if ((secondNumber-firstNumber)>=0){
-    const randomNumb = Math.round(Math.random()*(secondNumber-firstNumber)+firstNumber);
+const returnNumber = (firstNumber,secondNumber) => {
+  if ((secondNumber - firstNumber) >= 0) {
+    const randomNumb = Math.round(Math.random() * (secondNumber - firstNumber) + firstNumber);
     return randomNumb;
-  }else{
-    return('Ошибка! Первое число должно быть меньше второго!');
   }
-};
+  return(-1);
+} ;
 returnNumber(1,10);
 
-const strLength = function(ourStr,maxStr){
-  if(ourStr.length>maxStr.length){
-    return ('Длина строки превышает максимально допустимую');
-  }
-};
-strLength('ff','f');
+const strLength = (ourStr, maxStr) =>
+{  ourStr = String(ourStr);
+  return ourStr.length < maxStr.length;
+} ;
+strLength('ff','ssd');
 
 
