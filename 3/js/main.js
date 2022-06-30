@@ -48,22 +48,23 @@ const NAME = [
 ];
 const MESSAGE = [
   'Всё отлично!',
-  'В целом всё неплохо. Но не всё.'
+  'В целом всё неплохо. Но не всё.',
+  'Всё круто',
 ];
 
 const getRandomArrayElement = (elements) => elements [getRandomPositiveInteger(0, elements.length - 1)];
-const COMMENTS = [
-  {id:getRandomArrayElement(NAME.length),
-    message:getRandomArrayElement(MESSAGE),
-    avatar:getRandomArrayElement(AVATAR),
-    name:getRandomArrayElement(NAME)
-  }];
+
 const createReview = () => ({
   id:getRandomArrayElement(ID),
   url:getRandomArrayElement(URL),
   description : getRandomArrayElement(DESCRIPTION),
   likes: getRandomPositiveInteger (15,250),
-  comments:getRandomArrayElement(COMMENTS)
+  comments : [
+    {id:getRandomArrayElement(ID),
+      message:getRandomArrayElement(MESSAGE),
+      avatar:getRandomArrayElement(AVATAR),
+      name:getRandomArrayElement(NAME)
+    }]
 });
 // eslint-disable-next-line no-unused-vars
 const COMMENTARIES=Array.from({length:10},createReview);
