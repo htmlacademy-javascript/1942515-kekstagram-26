@@ -1,18 +1,3 @@
-const returnNumber = (firstNumber,secondNumber) => {
-  if ((secondNumber - firstNumber) >= 0) {
-    const randomNumb = Math.round(Math.random() * (secondNumber - firstNumber) + firstNumber);
-    return randomNumb;
-  }
-  return(-1);
-} ;
-returnNumber(1,10);
-
-const strLength = (ourStr, maxStr) =>
-{  ourStr = String(ourStr);
-  return ourStr.length <= maxStr.length;
-} ;
-strLength('ff','ssd');
-
 const getRandomPositiveInteger = (a,b) =>{
   const lower = Math.ceil(Math.min(Math.abs(a),Math.abs(b)));
   const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
@@ -20,17 +5,23 @@ const getRandomPositiveInteger = (a,b) =>{
   return Math.floor(result);
 };
 
-const ID = [];
-const URL = [];
-const AVATAR = [];
-for(let i = 0; i<=25; i++){
-  ID[i]=i+1;
-  URL[i] = `photos/${i+1}.jpg`;
+const maxValue = 25;
+const maxAvatarValue = 6;
+const minLikes = 15;
+const maxLikes = 250;
+const maxComments = 6;
+const allId = [];
+const allUrls = [];
+const allAvatars = [];
+const allComments = [];
+for(let i = 1; i<=maxValue; i++){
+  allId.push(i);
+  allUrls.push( `photos/${i+1}.jpg`);
 }
-for(let i = 0; i<=6;i++){
-  AVATAR[i] = `avatar-${i+1}.jpg`;
+for(let i = 0; i<=maxAvatarValue;i++){
+  allAvatars.push( `avatar-${i+1}.jpg`);
 }
-const DESCRIPTION = [
+const allDescriptions = [
   'Осень' ,
   'Поездка в даль' ,
   'Лучшие моменты в моей жизни' ,
@@ -38,7 +29,7 @@ const DESCRIPTION = [
   'Тёплые денёчки' ,
   'Опять поезда'
 ];
-const NAME = [
+const allNames = [
   'Алексей' ,
   'Владимир',
   'Сергей' ,
@@ -46,27 +37,37 @@ const NAME = [
   'Ирина' ,
   'Вероника'
 ];
-const MESSAGE = [
+const allMessages = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Всё круто',
 ];
 
 const getRandomArrayElement = (elements) => elements [getRandomPositiveInteger(0, elements.length - 1)];
-
+/*const COMMENTS = [
+  {
+    id:getRandomArrayElement(ID),
+    avatar:getRandomArrayElement(AVATARS),
+    message:getRandomArrayElement(MESSAGES),
+    name:getRandomArrayElement(NAMES)
+  }
+];*/
+for (let i = 1;i <= maxComments; i++)
+{
+  allComments[i] = {id:getRandomArrayElement( allId),
+    avatar:getRandomArrayElement(allAvatars),
+    message:getRandomArrayElement(allMessages),
+    name:getRandomArrayElement(allNames)
+  };
+}
 const createReview = () => ({
-  id:getRandomArrayElement(ID),
-  url:getRandomArrayElement(URL),
-  description : getRandomArrayElement(DESCRIPTION),
-  likes: getRandomPositiveInteger (15,250),
-  comments : [
-    {id:getRandomArrayElement(ID),
-      message:getRandomArrayElement(MESSAGE),
-      avatar:getRandomArrayElement(AVATAR),
-      name:getRandomArrayElement(NAME)
-    }]
+  id:getRandomArrayElement( allId),
+  url:getRandomArrayElement(allUrls),
+  description : getRandomArrayElement(allDescriptions),
+  likes: getRandomPositiveInteger (minLikes,maxLikes),
+  comments: getRandomArrayElement(allComments)
 });
 // eslint-disable-next-line no-unused-vars
-const COMMENTARIES=Array.from({length:10},createReview);
+const allPosts = Array.from({length:10},createReview);
 
 
