@@ -5,21 +5,21 @@ const getRandomPositiveInteger = (a,b) =>{
   return Math.floor(result);
 };
 
-const maxValue = 25;
-const maxAvatarValue = 6;
-const minLikes = 15;
-const maxLikes = 250;
-const maxComments = 6;
-const allId = [];
-const allUrls = [];
-const allAvatars = [];
-const allComments = [];
-for(let i = 1; i<=maxValue; i++){
-  allId.push(i);
-  allUrls.push( `photos/${i+1}.jpg`);
+const COUNT = 25;
+const AVATARCOUNT = 6;
+const MINLIKES = 15;
+const MAXLIKES = 250;
+const COMMENTSCOUNT = 6;
+const ID = [];
+const URLS = [];
+const AVATARS = [];
+const COMMENTS = [];
+for(let i = 1; i<=COUNT; i++){
+  ID.push(i);
+  URLS.push( `photos/${i+1}.jpg`);
 }
-for(let i = 0; i<=maxAvatarValue;i++){
-  allAvatars.push( `avatar-${i+1}.jpg`);
+for(let i = 0; i<=AVATARCOUNT;i++){
+  AVATARS.push( `avatar-${i+1}.jpg`);
 }
 const allDescriptions = [
   'Осень' ,
@@ -44,30 +44,21 @@ const allMessages = [
 ];
 
 const getRandomArrayElement = (elements) => elements [getRandomPositiveInteger(0, elements.length - 1)];
-/*const COMMENTS = [
-  {
-    id:getRandomArrayElement(ID),
-    avatar:getRandomArrayElement(AVATARS),
-    message:getRandomArrayElement(MESSAGES),
-    name:getRandomArrayElement(NAMES)
-  }
-];*/
-for (let i = 1;i <= maxComments; i++)
+for (let i = 1;i <= COMMENTSCOUNT; i++)
 {
-  allComments[i] = {id:getRandomArrayElement( allId),
-    avatar:getRandomArrayElement(allAvatars),
+  COMMENTS[i] = {id:getRandomArrayElement( ID),
+    avatar:getRandomArrayElement(AVATARS),
     message:getRandomArrayElement(allMessages),
     name:getRandomArrayElement(allNames)
   };
 }
 const createReview = () => ({
-  id:getRandomArrayElement( allId),
-  url:getRandomArrayElement(allUrls),
+  id:getRandomArrayElement( ID),
+  url:getRandomArrayElement(URLS),
   description : getRandomArrayElement(allDescriptions),
-  likes: getRandomPositiveInteger (minLikes,maxLikes),
-  comments: getRandomArrayElement(allComments)
+  likes: getRandomPositiveInteger (MINLIKES,MAXLIKES),
+  comments: getRandomArrayElement(COMMENTS)
 });
 // eslint-disable-next-line no-unused-vars
 const allPosts = Array.from({length:10},createReview);
-
 
