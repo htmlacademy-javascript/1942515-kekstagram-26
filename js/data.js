@@ -54,4 +54,4 @@ const createReview = () => ({
   likes: getRandomPositiveInteger (MINLIKES,MAXLIKES),
   comments: getRandomArrayElement(COMMENTS)
 });
-export const allPosts = Array.from({length:10},createReview);
+export const allPosts = Array.from({length:12},createReview);
