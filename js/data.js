@@ -4,6 +4,8 @@ const COUNT = 25;
 const AVATARCOUNT = 6;
 const MINLIKES = 15;
 const MAXLIKES = 250;
+const MINCOMMENTS = 1;
+const MAXCOMMENTS = 250;
 const COMMENTSCOUNT = 6;
 const ID = [];
 const URLS = [];
@@ -44,7 +46,7 @@ for (let i = 1;i <= COMMENTSCOUNT; i++)
   COMMENTS[i] = {id:getRandomArrayElement( ID),
     avatar:getRandomArrayElement(AVATARS),
     message:getRandomArrayElement(allMessages),
-    name:getRandomArrayElement(allNames)
+    name:getRandomArrayElement(allNames),
   };
 }
 const createReview = () => ({
@@ -52,6 +54,7 @@ const createReview = () => ({
   url:getRandomArrayElement(URLS),
   description : getRandomArrayElement(allDescriptions),
   likes: getRandomPositiveInteger (MINLIKES,MAXLIKES),
-  comments: getRandomArrayElement(COMMENTS)
+  comments: getRandomArrayElement(COMMENTS),
+  commentsCount:getRandomPositiveInteger(MINCOMMENTS,MAXCOMMENTS)
 });
-export const allPosts = Array.from({length:10},createReview);
+export const allPosts = Array.from({length:12},createReview);
